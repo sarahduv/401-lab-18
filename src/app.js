@@ -1,18 +1,15 @@
 'use strict';
 
-
-const fs = require('fs');
+require('fs');
 require('./modules/read-file.js');
 require('./modules/write-file.js');
 require('./modules/uppercase.js');
 require('./modules/app-logger.js');
-const net = require('net');
 const serverClient = require('./modules/app-server-client.js');
 const events = require('./modules/events.js');
-const client = new net.Socket();
+const io = require('socket.io-client');
 
 let file = process.argv.slice(2).shift();
-
 
 // Lifecycle
 // ... we start the app here
@@ -29,4 +26,4 @@ events.on('uppercase_done', (data) => {
 
 events.emit('read', file);
 
-serverClient(client);
+serverClient(io);
