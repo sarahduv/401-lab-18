@@ -5,10 +5,9 @@ require('./modules/read-file.js');
 require('./modules/write-file.js');
 require('./modules/uppercase.js');
 require('./modules/app-logger.js');
-const net = require('net');
 const serverClient = require('./modules/app-server-client.js');
 const events = require('./modules/events.js');
-const client = new net.Socket();
+const client = require('socket.io-client');
 
 let file = process.argv.slice(2).shift();
 
